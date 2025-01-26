@@ -24,3 +24,10 @@ for (int i = 0; i < array.Length; i++)
 Console.WriteLine(ReverseAndNot.Reverse(123));
 
 Console.WriteLine(ATMpinCodeValidation.PinValidation("111111"));
+
+
+ double[] largest =  LargestNumberInArrays.FindLargest([[4, 2, 7, 1], [20, 70, 40, 90], [1, 2, 0]]);
+for (int j = 0; j < largest.Length; j++)
+{
+    Console.WriteLine($"Largest: {largest[j]}");
+}
