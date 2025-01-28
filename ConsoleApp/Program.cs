@@ -33,10 +33,28 @@ for (int j = 0; j < largest.Length; j++)
 }*/
 
 
-ListExample.ListDemo();
+/*ListExample.ListDemo();
 ListExample.Insert();
 ListExample.Remove();
 ListExample.Clear();
 ListExample.ListToArray();
 ListExample.ArrayToList();
-ListExample.LINQ();
+ListExample.LINQ();*/
+
+
+Console.WriteLine(EqualityCheck.CheckEquality(1, 1));
+
+int[] index= IndexOfCapitals.IndexOfCapitalsLetters("eDaBiT");
+for(int p=0; p<index.Length; p++)
+{
+    Console.WriteLine(index[p]);
+}
+
+Console.WriteLine(FindTheBomb.Bomb("Hey, did you find the BoMb?"));
+
+Console.WriteLine(AWeekAfter.WeekAfter("29/03/2020"));
+
+Console.WriteLine(PhoneNumberValidator.PhoneNumberValidation("(123) 456-7890"));
+
+Console.WriteLine($"Sum of two smallest number: {SumOfTwoSmallestNumber.SumSmallest([19, 5, 42, 2, 77])}");
+
