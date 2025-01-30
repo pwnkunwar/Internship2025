@@ -4,6 +4,7 @@
 
 using ConsoleApp;
 using ConsoleApp.Jan29;
+using ConsoleApp.Jan30;
 
 /*Console.WriteLine("First Number = ");
 int firstNumber = int.Parse(Console.ReadLine());
@@ -64,10 +65,10 @@ Console.WriteLine($"Sum of two smallest number: {SumOfTwoSmallestNumber.SumSmall
 
 // jan29
 
-BasicExceptionHandling.Exception();
+/*BasicExceptionHandling.Exception();
 
 ExceptionHandeling.ExceptionWithThrow();
-
+*//*
 Exercise1.MatrixAddition();
 Exercise2.FrequencyELement();
 Exercise3.Duplicate();
@@ -76,14 +77,19 @@ Exercise5.Merge();
 Exercise6.SecondLargestElement();
 Exercise7.Reverse();
 Console.WriteLine(Exercise8.Palindrome());
-Exercise9.CommonElements();
+Exercise9.CommonElements();*/
 
 
 
 
+/*ClassWork classWork = new ClassWork();
+classWork.Call();*/
 
 
+/*Student student = new Student("Pawan Kunwar", 23, "CSIT");
+student.PrintDetails();*/
 
+RotateAList.Rotate();
 
 
 
