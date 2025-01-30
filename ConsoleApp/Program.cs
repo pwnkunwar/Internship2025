@@ -89,8 +89,31 @@ classWork.Call();*/
 /*Student student = new Student("Pawan Kunwar", 23, "CSIT");
 student.PrintDetails();*/
 
-RotateAList.Rotate();
+/*RotateAList.Rotate();*/
 
 
+Car car = new Car();
+car.Brand = "Lambo";
+car.Start();
+car.Drive();
 
+
+Manager manager = new Manager();
+manager.Name = "Viper";
+manager.Salary = 25000;
+manager.Department = "IT";
+manager.ShowName();
+manager.ShowSalary();
+manager.ShowDepartment();
+
+
+IVehicle vehicle = new MotorVehicle();
+vehicle.Start();
+vehicle.Stop();
+
+
+Dog dog = new Dog();
+dog.Name = "Jack";
+dog.MakeSound();
+dog.Eat();
 
