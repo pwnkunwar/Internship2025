@@ -21,10 +21,9 @@ namespace ConsoleApp.Jan29
                 Console.Write("Student " + (i + 1)+" Average:");
                 foreach(float mark in studentsMarks[i])
                 {
-                    if (mark >= 0.5f) // Only include valid marks
-                    {
+                    
                         average += mark;
-                    }
+                    
                 }
                 
                     Console.Write(average / studentsMarks[i].Length + "\n");
