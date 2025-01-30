@@ -3,6 +3,7 @@
 
 
 using ConsoleApp;
+using ConsoleApp.Jan29;
 
 /*Console.WriteLine("First Number = ");
 int firstNumber = int.Parse(Console.ReadLine());
@@ -42,7 +43,7 @@ ListExample.ArrayToList();
 ListExample.LINQ();*/
 
 
-Console.WriteLine(EqualityCheck.CheckEquality(1, 1));
+/*Console.WriteLine(EqualityCheck.CheckEquality(1, 1));
 
 int[] index= IndexOfCapitals.IndexOfCapitalsLetters("eDaBiT");
 for(int p=0; p<index.Length; p++)
@@ -57,4 +58,33 @@ Console.WriteLine(AWeekAfter.WeekAfter("29/03/2020"));
 Console.WriteLine(PhoneNumberValidator.PhoneNumberValidation("(123) 456-7890"));
 
 Console.WriteLine($"Sum of two smallest number: {SumOfTwoSmallestNumber.SumSmallest([19, 5, 42, 2, 77])}");
+
+
+*/
+
+// jan29
+
+BasicExceptionHandling.Exception();
+
+ExceptionHandeling.ExceptionWithThrow();
+
+Exercise1.MatrixAddition();
+Exercise2.FrequencyELement();
+Exercise3.Duplicate();
+Exercise4.JaggedA();
+Exercise5.Merge();
+Exercise6.SecondLargestElement();
+Exercise7.Reverse();
+Console.WriteLine(Exercise8.Palindrome());
+Exercise9.CommonElements();
+
+
+
+
+
+
+
+
+
+
 
