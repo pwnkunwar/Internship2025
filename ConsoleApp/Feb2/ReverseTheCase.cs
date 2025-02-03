@@ -9,7 +9,7 @@ namespace ConsoleApp.Feb2
 {
     public class ReverseTheCase
     {
-        public static void ReverseCase(string str)
+        public static string ReverseCase(string str)
         {
             char[] reversed = new char[str.Length];
             for(int i=0; i< str.Length; i++)
@@ -27,7 +27,7 @@ namespace ConsoleApp.Feb2
                     reversed[i] = str[i];
                 }
             }
-            Console.WriteLine(reversed);
+            return new string(reversed);
 
         }
     }
