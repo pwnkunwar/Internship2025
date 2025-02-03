@@ -3,6 +3,7 @@
 
 
 using ConsoleApp;
+using ConsoleApp.Feb2;
 using ConsoleApp.Jan29;
 using ConsoleApp.Jan30;
 
@@ -116,4 +117,28 @@ Dog dog = new Dog();
 dog.Name = "Jack";
 dog.MakeSound();
 dog.Eat();
+
+
+//feb 2
+
+MethodOverloading methodOverloading = new MethodOverloading();
+Console.WriteLine(methodOverloading.Add(5,10));
+Console.WriteLine(methodOverloading.Add(5,10,20));
+Console.WriteLine(methodOverloading.Add(5.5,2.5));
+Console.WriteLine(methodOverloading.Add("Hello","World"));
+
+
+
+Animal1 animal1 = new Animal1();
+Dog1 dog1 = new Dog1();
+Animal1 cat1 = new Cat1();
+
+animal1.MakeSound();
+dog1.MakeSound();
+cat1.MakeSound();
+
+
+
+AsynchronousProgramming a = new AsynchronousProgramming();
+await a.DoWorkAsync();
 
