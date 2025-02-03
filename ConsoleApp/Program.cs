@@ -142,3 +142,8 @@ cat1.MakeSound();
 AsynchronousProgramming a = new AsynchronousProgramming();
 await a.DoWorkAsync();
 
+Console.WriteLine(ReverseTheCase.ReverseCase("Happy Birthday"));
+
+
+
+Console.WriteLine(SortDescending.SortDescendingNumber(1342));
