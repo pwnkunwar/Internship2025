@@ -4,6 +4,7 @@
 
 using ConsoleApp;
 using ConsoleApp.Feb2;
+using ConsoleApp.Feb3;
 using ConsoleApp.Jan29;
 using ConsoleApp.Jan30;
 
@@ -93,7 +94,7 @@ student.PrintDetails();*/
 /*RotateAList.Rotate();*/
 
 
-Car car = new Car();
+/*Car car = new Car();
 car.Brand = "Lambo";
 car.Start();
 car.Drive();
@@ -146,4 +147,19 @@ Console.WriteLine(ReverseTheCase.ReverseCase("Happy Birthday"));
 
 
 
-Console.WriteLine(SortDescending.SortDescendingNumber(1342));
+Console.WriteLine(SortDescending.SortDescendingNumber(1342));*/
+
+
+
+//FEB 3
+/*Product product1 = new Product();
+Product product2 = new Product("Samsung",20000,"Accessories");
+product1.PrintDetails();
+product2.PrintDetails();
+*/
+
+
+BankAccount bankAccount = new BankAccount("123","Pawan",1000);
+bankAccount.DisplayAccountDetails();
+bankAccount.Deposit(2000);
+bankAccount.Withdraw(500);
