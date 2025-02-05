@@ -2,11 +2,13 @@
 //Console.WriteLine("Hello, World!");
 
 
+using ClassLibrary1;
 using ConsoleApp;
 using ConsoleApp.Feb2;
 using ConsoleApp.Feb3;
 using ConsoleApp.Jan29;
 using ConsoleApp.Jan30;
+using LibraryA;
 
 /*Console.WriteLine("First Number = ");
 int firstNumber = int.Parse(Console.ReadLine());
@@ -159,7 +161,35 @@ product2.PrintDetails();
 */
 
 
-BankAccount bankAccount = new BankAccount("123","Pawan",1000);
+/*BankAccount bankAccount = new BankAccount("123","Pawan",1000);
 bankAccount.DisplayAccountDetails();
 bankAccount.Deposit(2000);
 bankAccount.Withdraw(500);
+
+
+
+Product product = new Product();
+product.PrintDetails(); 
+
+Product product1 = new Product("Samsung",20000,"ABC");
+product1.PrintDetails();*/
+
+
+//feb 4
+
+PublicClass publicClass = new PublicClass();
+publicClass.GetPublicMessage();
+
+
+/*InternalClass internalClass = new InternalClass();*/ // not accessible since InternalClass is protected by internal keyword
+
+DerivedClass derivedClass = new DerivedClass();
+derivedClass.ShowMessage();
+class DerivedClass : BaseClass
+{
+    public void ShowMessage()
+    {
+        Console.WriteLine(Message);
+    }
+}
+
