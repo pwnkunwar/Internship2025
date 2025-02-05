@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp.Feb4
 {
-    public class FileHandling
+    public class FileHandlingWrite
     {
         public void WriteToFile(string filePath, string content)
         {

@@ -6,6 +6,7 @@ using ClassLibrary1;
 using ConsoleApp;
 using ConsoleApp.Feb2;
 using ConsoleApp.Feb3;
+using ConsoleApp.Feb4;
 using ConsoleApp.Jan29;
 using ConsoleApp.Jan30;
 using LibraryA;
@@ -183,8 +184,19 @@ publicClass.GetPublicMessage();
 
 /*InternalClass internalClass = new InternalClass();*/ // not accessible since InternalClass is protected by internal keyword
 
+FileHandlingWrite fileHandling = new FileHandlingWrite();
+fileHandling.WriteToFile("C:\\Users\\pwn\\Desktop\\demo.txt", "Hello World");
+
+FileHandlingRead fileHandlingRead = new FileHandlingRead();
+fileHandlingRead.ReadFromFile("C:\\Users\\pwn\\Desktop\\demo.txt");
+DerivedClass1 derivedClass1 = new DerivedClass1();
+derivedClass1.DisplaySecret();
+
 DerivedClass derivedClass = new DerivedClass();
 derivedClass.ShowMessage();
+
+
+
 class DerivedClass : BaseClass
 {
     public void ShowMessage()
@@ -192,4 +204,5 @@ class DerivedClass : BaseClass
         Console.WriteLine(Message);
     }
 }
+
 
