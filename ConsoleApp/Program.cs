@@ -6,7 +6,8 @@ using ClassLibrary1;
 using ConsoleApp;
 using ConsoleApp.Feb2;
 using ConsoleApp.Feb3;
-using ConsoleApp.Feb4;
+using ConsoleApp.Feb6;
+using ConsoleApp.Feb7;
 using ConsoleApp.Jan29;
 using ConsoleApp.Jan30;
 using LibraryA;
@@ -178,13 +179,13 @@ product1.PrintDetails();*/
 
 //feb 4
 
-PublicClass publicClass = new PublicClass();
-publicClass.GetPublicMessage();
+/*PublicClass publicClass = new PublicClass();
+publicClass.GetPublicMessage();*/
 
 
 /*InternalClass internalClass = new InternalClass();*/ // not accessible since InternalClass is protected by internal keyword
 
-FileHandlingWrite fileHandling = new FileHandlingWrite();
+/*FileHandlingWrite fileHandling = new FileHandlingWrite();
 fileHandling.WriteToFile("C:\\Users\\pwn\\Desktop\\demo.txt", "Hello World");
 
 FileHandlingRead fileHandlingRead = new FileHandlingRead();
@@ -203,6 +204,29 @@ class DerivedClass : BaseClass
     {
         Console.WriteLine(Message);
     }
-}
+}*/
 
 
+/*Person1 person1 = new Person1();
+person1.Info();
+
+Employee1 employee1 = new Employee1();
+employee1.Info();
+
+
+Manage manage = new Manage();   
+manage.Info();*/
+
+
+
+Dog2 dog = new Dog2("Buddy");
+
+Circle myCircle  = new Circle();
+myCircle.DrawCircle();
+
+
+Smartphone phone = new Smartphone();
+Console.WriteLine(phone.Model);
+
+House myHouse = new House();
+myHouse.ShowStructure();
