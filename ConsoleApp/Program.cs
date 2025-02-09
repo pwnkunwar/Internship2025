@@ -8,6 +8,7 @@ using ConsoleApp.Feb2;
 using ConsoleApp.Feb3;
 using ConsoleApp.Feb6;
 using ConsoleApp.Feb7;
+using ConsoleApp.Feb8;
 using ConsoleApp.Jan29;
 using ConsoleApp.Jan30;
 using LibraryA;
@@ -219,7 +220,7 @@ manage.Info();*/
 
 
 
-Dog2 dog = new Dog2("Buddy");
+/*Dog2 dog = new Dog2("Buddy");
 
 Circle myCircle  = new Circle();
 myCircle.DrawCircle();
@@ -229,4 +230,27 @@ Smartphone phone = new Smartphone();
 Console.WriteLine(phone.Model);
 
 House myHouse = new House();
-myHouse.ShowStructure();
+myHouse.ShowStructure();*/
+
+
+
+Student10 student1 = new Student10("PK", 20, 85.3);
+Console.WriteLine("Student Details");
+student1.DisplayInfo();
+
+Console.WriteLine("\nGraduate Student Details");
+GraduateStudent graduate = new GraduateStudent("Bob",25,90.0,"AI");
+graduate.DisplayInfo();
+
+
+Appliance washingMachine = new WashingMachine("LG");
+washingMachine.DisplayBrand();
+washingMachine.TurnOn();
+
+
+Product8 product8 = new Product8();
+product8.JsonDeserialization();
+
+
+Product88 product88 = new Product88();
+product88.JsonSerialization();
