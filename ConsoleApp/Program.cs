@@ -4,6 +4,7 @@
 
 using ClassLibrary1;
 using ConsoleApp;
+using ConsoleApp.Feb10;
 using ConsoleApp.Feb2;
 using ConsoleApp.Feb3;
 using ConsoleApp.Feb6;
@@ -234,7 +235,7 @@ myHouse.ShowStructure();*/
 
 
 
-Student10 student1 = new Student10("PK", 20, 85.3);
+/*Student10 student1 = new Student10("PK", 20, 85.3);
 Console.WriteLine("Student Details");
 student1.DisplayInfo();
 
@@ -253,4 +254,16 @@ product8.JsonDeserialization();
 
 
 Product88 product88 = new Product88();
-product88.JsonSerialization();
+product88.JsonSerialization();*/
+
+
+Person10 person10 = new Person10
+{
+    FirstName = "John",
+    LastName = "Doe"
+};
+
+person10.ShowFullName();
+
+int num = 8;
+Console.WriteLine(num.IsEven());
