@@ -267,3 +267,15 @@ person10.ShowFullName();
 
 int num = 8;
 Console.WriteLine(num.IsEven());
+
+
+CountAll.count_all("Hello World");
+CountAll.count_all("H3ll0 World");
+CountAll.count_all("9078");
+
+
+CountVowels.VowelsCount("Hello World");
+CountVowels.VowelsCount("C# Programming");
+CountVowels.VowelsCount("xyz");
+
+
