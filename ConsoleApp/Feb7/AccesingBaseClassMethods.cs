@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp.Feb7
 {
+
     public class Shape
     {
         public void Draw()
