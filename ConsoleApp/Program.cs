@@ -5,6 +5,8 @@
 using ClassLibrary1;
 using ConsoleApp;
 using ConsoleApp.Feb10;
+using ConsoleApp.Feb11;
+using ConsoleApp.Feb12;
 using ConsoleApp.Feb2;
 using ConsoleApp.Feb3;
 using ConsoleApp.Feb6;
@@ -257,7 +259,7 @@ Product88 product88 = new Product88();
 product88.JsonSerialization();*/
 
 
-Person10 person10 = new Person10
+/*Person10 person10 = new Person10
 {
     FirstName = "John",
     LastName = "Doe"
@@ -276,6 +278,22 @@ CountAll.count_all("9078");
 
 CountVowels.VowelsCount("Hello World");
 CountVowels.VowelsCount("C# Programming");
-CountVowels.VowelsCount("xyz");
+CountVowels.VowelsCount("xyz");*/
 
 
+
+/*Student11 student11 = new Student11();
+student11.Name = "John";
+student11.Age = 12;
+student11.PrintDetails();
+
+
+IPlay play = new Playable11();
+play.Play11();
+IStop play1 = new Playable11();
+play1.Stop11();*/
+
+
+
+LINQExample example = new LINQExample();
+example.LINQEx();
