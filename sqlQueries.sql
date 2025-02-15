@@ -48,7 +48,6 @@ CREATE TABLE Employees(
 
 
 
-
  Create table Departments (
  DepartmentID INT PRIMARY KEY IDENTITY(1,1),
  DepartmentName NVARCHAR(100) NOT NULL
@@ -115,5 +114,66 @@ SELECT FirstName, LastName FROM Employees WHERE DepartmentID IN (1,2);
 
 
 
+-- STORED PROCEDURE
 
 
+CREATE PROCEDURE GetAllUsers
+AS 
+BEGIN 
+     SELECT * FROM Employees;
+END;
+
+-- To execute
+
+EXEC GetAllUsers;
+
+
+-- Stored Procedure with Parameters
+
+ALTER PROCEDURE GetEmployeeById
+@UserId INT
+AS 
+BEGIN 
+    SELECT * FROM Employees WHERE EmployeeID = @UserId;
+END;
+
+
+EXEC GetEmployeeById @UserId = 1;
+
+
+-- Stored Procedure for Inserting Data
+
+
+CREATE PROCEDURE InserEmployee
+@FirstName NVARCHAR(50),
+@LastName NVARCHAR(50),
+@Email NVARCHAR(100),
+@Salary decimal(10,2),
+@PhoneNumber NVARCHAR(100),
+@DepartMentId INT
+
+
+AS BEGIN 
+INSERT INTO Employees (FirstName,LastName,Email,Salary,PhoneNumber,DepartmentID) 
+VALUES (@FirstName, @LastName,@Email,@Salary,@PhoneNumber,@DepartMentId);
+END;
+
+
+EXEC InserEmployee @FirstName = 'John', @LastName = 'Doe', @Email='johndoe@gmail.com',@Salary='16000',@PhoneNumber = '9846109393',@DepartMentId=1;
+
+-- Stored Procedure with IF-ELSE Logic
+
+CREATE PROCEDURE CheckUserExists 
+@EmployeeId INT
+AS BEGIN 
+IF EXISTS (SELECT 1 FROM Employees WHERE EmployeeID=@EmployeeId)
+PRINT 'USER EXISTS';
+ELSE
+PRINT 'USER NOT FOUND';
+END;
+
+EXEC CheckUserExists @EmployeeId =2;
+
+-- DELETE PROCEDURE
+
+DROP PROCEDURE CheckUserExists;
