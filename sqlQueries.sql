@@ -252,3 +252,37 @@ select patient_id, first_name from patients where first_name like 's%s' And len(
 
 
 select p.patient_id, p.first_name, p.last_name From patients p join admissions ad ON p.patient_id = ad.patient_id where ad.diagnosis = 'Dementia';
+
+
+
+
+-- Students table
+CREATE TABLE Students (
+StudentID INT PRIMARY KEY IDENTITY(1,1),
+Name varchar(100) NOT NULL,
+AGE int,
+Grade VARCHAR(10),
+City VARCHAR(50)
+);
+
+
+INSERT INTO Students (Name, Age, Grade, City) VALUES
+('Alice', 15, '10th', 'New York'),
+('Bob', 16, '11th', 'Los Angeles'),
+('Charlie', 14, '9th', 'Chicago'),
+('David', 17, '12th', 'Houston'),
+('Emma', 15, '10th', 'Phoenix');
+
+
+CREATE VIEW StudentGrades AS SELECT StudentID, Name, Grade FROM Students;
+
+SELECT * FROM StudentGrades;
+
+
+CREATE VIEW TenthGraders AS SELECT StudentID, Name, Grade FROM Students 
+WHERE Grade = '10th';
+
+SELECT * FROM TenthGraders;
+
+
+DROP VIEW StudentGrades;
