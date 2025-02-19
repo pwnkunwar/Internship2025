@@ -7,6 +7,7 @@ using ConsoleApp;
 using ConsoleApp.Feb10;
 using ConsoleApp.Feb11;
 using ConsoleApp.Feb12;
+using ConsoleApp.Feb19;
 using ConsoleApp.Feb2;
 using ConsoleApp.Feb3;
 using ConsoleApp.Feb6;
@@ -295,5 +296,9 @@ play1.Stop11();*/
 
 
 
-LINQExample example = new LINQExample();
-example.LINQEx();
+/*LINQExample example = new LINQExample();
+example.LINQEx();*/
+
+
+
+CRUDApplication.App();
