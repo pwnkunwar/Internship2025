@@ -299,3 +299,28 @@ Id INT IDENTITY(1,1) PRIMARY KEY,
 NAME VARCHAR(100) NOT NULL,
 Price DECIMAL(18,2) NOT NULL
 );
+
+
+CREATE DATABASE BankDB;
+
+GO
+USE BankDB;
+GO
+CREATE TABLE Accounts(
+AccountId INT IDENTITY(1,1) PRIMARY KEY,
+AccountNumber NVARCHAR(100) NOT NULL,
+Name NVARCHAR(200),
+AccountType VARCHAR(100),
+Balance DECIMAL(18,2),
+CreatedDate DATETIME
+);
+
+CREATE TABLE Transactions(
+TransactionId INT IDENTITY(1,1) PRIMARY KEY,
+AccountId INT,
+TransactionType NVARCHAR(150),
+Amount DECIMAL(18,2),
+TransactionDate DATE,
+Description NVARCHAR(150),
+CONSTRAINT FK_Transactions_Accounts FOREIGN KEY(AccountId) REFERENCES Accounts(AccountId)
+);
