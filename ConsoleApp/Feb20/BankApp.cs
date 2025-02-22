@@ -23,6 +23,8 @@ namespace ConsoleApp.Feb20
                 Console.WriteLine("1.Create New Account");
                 Console.WriteLine("2.View Account Details");
                 Console.WriteLine("3.Withdraw Amount");
+                Console.WriteLine("4.Send Amount");
+                Console.WriteLine("5.Exit");
 
                 Console.WriteLine("Choose an option: ");
 
@@ -41,219 +43,254 @@ namespace ConsoleApp.Feb20
                     case "4":
                         SendMoney();
                         break;
-                        
+                    case "5":
+                        Console.WriteLine("Existing...");
+                        return;
+                    default:
+                        Console.WriteLine("Invalid Input");
+                        break;
                 }
 
                 static void CreateNewAccount()
                 {
-                    Console.WriteLine("Enter Your FullName");
-                    string name = Console.ReadLine();
-                    Console.WriteLine("Choose Account Type: 1.Savings 2.Current\n");
-                    string type = Console.ReadLine();
-                    string accountType = null;
-                    if (type != "1" && type != "2")
+                    try
                     {
-                        Console.WriteLine("Invalid input");
-                        CreateNewAccount();
-                    }
-                    if(type == "1")
-                    {
-                        accountType = "Savings";
-                    }
-                    if(type == "2")
-                    {
-                        accountType = "Current";
-                    }
-                    Console.WriteLine("Enter Balance");
-                    decimal balance = decimal.Parse(Console.ReadLine());
-                    string accountNumber = Guid.NewGuid().ToString();
-                    string createdDate = DateTime.Now.ToString();
-                    using (SqlConnection conn = new SqlConnection(connectionString))
-                    {
-                        conn.Open();
-                        string query = "INSERT INTO Accounts(AccountNumber,Name,AccountType,Balance,CreatedDate) VALUES(@accountNumber,@name,@accountType,@balance,@createdDate)";
-                        using(SqlCommand cmd = new SqlCommand(query, conn))
+                        Console.WriteLine("Enter Your FullName");
+                        string name = Console.ReadLine().ToLower();
+                        Console.WriteLine("Choose Account Type: 1.Savings 2.Current");
+                        string type = Console.ReadLine();
+                        string accountType = null;
+                        if (type != "1" && type != "2")
                         {
-                            cmd.Parameters.AddWithValue("@AccountNumber",accountNumber);
-                            cmd.Parameters.AddWithValue("@Name",name);
-                            cmd.Parameters.AddWithValue("@AccountType", accountType);
-                            cmd.Parameters.AddWithValue("@Balance", balance);
-                            cmd.Parameters.AddWithValue("@CreatedDate", createdDate);
-                            cmd.ExecuteNonQuery();
+                            Console.WriteLine("Invalid input");
+                            CreateNewAccount();
                         }
+                        if (type == "1")
+                        {
+                            accountType = "Savings";
+                        }
+                        if (type == "2")
+                        {
+                            accountType = "Current";
+                        }
+                        Console.WriteLine("Enter Balance");
+                        decimal balance = decimal.Parse(Console.ReadLine());
+                        string accountNumber = Guid.NewGuid().ToString();
+                        string createdDate = DateTime.Now.ToString();
+                        using (SqlConnection conn = new SqlConnection(connectionString))
+                        {
+                            conn.Open();
+                            string query = "INSERT INTO Accounts(AccountNumber,Name,AccountType,Balance,CreatedDate) VALUES(@accountNumber,@name,@accountType,@balance,@createdDate)";
+                            using (SqlCommand cmd = new SqlCommand(query, conn))
+                            {
+                                cmd.Parameters.AddWithValue("@AccountNumber", accountNumber);
+                                cmd.Parameters.AddWithValue("@Name", name);
+                                cmd.Parameters.AddWithValue("@AccountType", accountType);
+                                cmd.Parameters.AddWithValue("@Balance", balance);
+                                cmd.Parameters.AddWithValue("@CreatedDate", createdDate);
+                                cmd.ExecuteNonQuery();
+                            }
+                        }
+                        Console.WriteLine("Account Created Successfully!");
+                    }catch(Exception ex)
+                    {
+                        Console.WriteLine("Something unusual happened!");
+
                     }
-                    Console.WriteLine("Account Created Successfully!");
                 }
                 static void ViewBankInfo()
                 {
-                    Console.WriteLine("Enter Account Number:");
-                    String accountNumber = Console.ReadLine();
-                    string query = "SELECT * FROM Accounts WHERE AccountNumber = @accountNumber";
-                    using(SqlConnection conn = new SqlConnection(connectionString))
+                    try
                     {
-                        conn.Open();
-                        using(SqlCommand cmd =  new SqlCommand(query,conn))
+                        Console.WriteLine("Enter Account Number:");
+                        String accountNumber = Console.ReadLine();
+                        string query = "SELECT * FROM Accounts WHERE AccountNumber = @accountNumber";
+                        using (SqlConnection conn = new SqlConnection(connectionString))
                         {
-                            cmd.Parameters.AddWithValue("@accountNumber",accountNumber);
-                            using(SqlDataReader reader = cmd.ExecuteReader())
+                            conn.Open();
+                            using (SqlCommand cmd = new SqlCommand(query, conn))
                             {
-                                if(!reader.HasRows)
+                                cmd.Parameters.AddWithValue("@accountNumber", accountNumber);
+                                using (SqlDataReader reader = cmd.ExecuteReader())
                                 {
-                                    Console.WriteLine("No deatils found.");
-                                    return;
-                                }
-                                Console.WriteLine("\n--Account Details---");
-                                while(reader.Read())
-                                {
-                                    Console.WriteLine("AccountNumber: " + reader["AccountNumber"]);
-                                    Console.WriteLine("Name: " + reader["Name"]);
-                                    Console.WriteLine("AccountType " + reader["AccountType"]);
-                                    Console.WriteLine("Balance: " + reader["Balance"]);
+                                    if (!reader.HasRows)
+                                    {
+                                        Console.WriteLine("No deatils found.");
+                                        return;
+                                    }
+                                    Console.WriteLine("\n--Account Details---");
+                                    while (reader.Read())
+                                    {
+                                        Console.WriteLine("AccountNumber: " + reader["AccountNumber"]);
+                                        Console.WriteLine("Name: " + reader["Name"]);
+                                        Console.WriteLine("AccountType " + reader["AccountType"]);
+                                        Console.WriteLine("Balance: " + reader["Balance"]);
+                                    }
                                 }
                             }
                         }
+                    }
+                    catch(Exception ex)
+                    {
+                        Console.WriteLine("Something unusual happened!");
+
                     }
                 }
                 static void WithDrawMoney()
                 {
-                    decimal Balance;
-                    decimal finalBalance=0;
-                    Console.WriteLine("Please enter the account number: ");
-                    string accountNumber = Console.ReadLine();
-                    Console.WriteLine("Enter the amount:");
-                    decimal balance = decimal.Parse(Console.ReadLine());
-                    if(balance < 0)
+                    try
                     {
-                        Console.WriteLine("Balance cannot be less than zero");
-                    }
-                    string query = "SELECT Balance FROM Accounts Where AccountNumber = @accountNumber";
-                    using(SqlConnection connection = new SqlConnection(connectionString))
-                    {
-                        connection.Open();
-                        using(SqlCommand cmd = new SqlCommand(query,connection))
+                        decimal Balance;
+                        decimal finalBalance = 0;
+                        Console.WriteLine("Please enter the account number: ");
+                        string accountNumber = Console.ReadLine();
+                        Console.WriteLine("Enter the amount:");
+                        decimal balance = decimal.Parse(Console.ReadLine());
+                        if (balance < 0)
                         {
-                            cmd.Parameters.AddWithValue("@accountNumber",accountNumber);
-                            using(SqlDataReader reader =cmd.ExecuteReader())
+                            Console.WriteLine("Balance cannot be less than zero");
+                        }
+                        string query = "SELECT Balance FROM Accounts Where AccountNumber = @accountNumber";
+                        using (SqlConnection connection = new SqlConnection(connectionString))
+                        {
+                            connection.Open();
+                            using (SqlCommand cmd = new SqlCommand(query, connection))
                             {
-                                if (!reader.HasRows)
+                                cmd.Parameters.AddWithValue("@accountNumber", accountNumber);
+                                using (SqlDataReader reader = cmd.ExecuteReader())
                                 {
-                                    Console.WriteLine("Not found.");
-                                    return;
-                                }
-                                Console.WriteLine("\n--Withdraw Money---");
-                                while (reader.Read())
-                                {
-                                     finalBalance = Convert.ToDecimal(reader["Balance"]) - balance;
-                                }
-                            }
-                            string query1 = "UPDATE Accounts SET Balance = @finalBalance WHERE AccountNumber = @accountNumber";
-                            using(SqlCommand cmd1 = new SqlCommand(query1,connection))
-                            {
-                                cmd1.Parameters.AddWithValue("@finalBalance",finalBalance);
-                                cmd1.Parameters.AddWithValue("@accountNumber",accountNumber);
-                                int rowsAffected = cmd1.ExecuteNonQuery();
-                                if(rowsAffected > 0)
-                                {
-                                    Console.WriteLine("Balance updated successfully.");
-                                }
-                                else
-                                {
-                                    Console.WriteLine("Account not found.");
-                                }
-                            }
+                                    if (!reader.HasRows)
+                                    {
+                                        Console.WriteLine("Not Account found.");
+                                        return;
+                                    }
+                                    while (reader.Read())
+                                    {
+                                        if (Convert.ToDecimal(reader["Balance"]) < balance)
+                                        {
+                                            Console.WriteLine("You does not have sufficient balance");
+                                            return;
+                                        }
+                                        else
+                                        {
+                                            finalBalance = Convert.ToDecimal(reader["Balance"]) - balance;
+                                            Console.WriteLine($"You have  withdraw {balance} amount successully!");
+                                        }
 
+                                    }
+                                }
+                                string query1 = "UPDATE Accounts SET Balance = @finalBalance WHERE AccountNumber = @accountNumber";
+                                using (SqlCommand cmd1 = new SqlCommand(query1, connection))
+                                {
+                                    cmd1.Parameters.AddWithValue("@finalBalance", finalBalance);
+                                    cmd1.Parameters.AddWithValue("@accountNumber", accountNumber);
+                                    int rowsAffected = cmd1.ExecuteNonQuery();
+                                    if (rowsAffected > 0)
+                                    {
+
+                                        Console.WriteLine("Balance updated successfully.");
+                                    }
+
+                                }
+
+
+                            }
 
                         }
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine("Something unusual happened!");
 
                     }
                 }
                 static void SendMoney()
                 {
-                    decimal totalAmount = 0;
-                    decimal AmountValue = 0;
-                    Console.WriteLine("Enter the amount to be sent:");
-                    decimal amount = decimal.Parse(Console.ReadLine());
-                    if(amount < 0)
+                    try
                     {
-                        Console.WriteLine("Amount cannot be less than zero");
-                    }
-                    Console.WriteLine("Enter the Receiver Account Number ");
-                    string accountNumber = Console.ReadLine();
-                    Console.WriteLine("Enter your Account Number");
-                    string number = Console.ReadLine();
-                    Console.WriteLine("Enter the Receiver Account Name");
-                    string name = Console.ReadLine();   
-
-                    using(SqlConnection conn = new SqlConnection(connectionString))
-                    {
-                        conn.Open();
-                        string query = "SELECT Balance FROM Accounts WHERE AccountNumber = @accountNumber AND Name = @name";
-                        using (SqlCommand cmd = new SqlCommand(query, conn))
+                        decimal totalAmount = 0;
+                        decimal AmountValue = 0;
+                        Console.WriteLine("Enter the amount to be sent:");
+                        decimal amount = decimal.Parse(Console.ReadLine());
+                        if (amount < 0)
                         {
-                            cmd.Parameters.AddWithValue("@accountNumber", accountNumber);
-                            cmd.Parameters.AddWithValue("@name", name);
-                            using(SqlDataReader reader = cmd.ExecuteReader())
-                            {
-                                if (!reader.HasRows)
-                                {
-                                    Console.WriteLine("Not found.");
-                                    return;
-                                }
-                                Console.WriteLine("\n--Deposit Money---");
-                                while (reader.Read())
-                                {
-                                     totalAmount = Convert.ToDecimal(reader["Balance"]) + amount;
-                                }
-                            }
+                            Console.WriteLine("Amount cannot be less than zero");
                         }
-                        string query2 = "SELECT Balance FROM Accounts WHERE AccountNumber = @number";
-                        using (SqlCommand cmd2 = new SqlCommand(query2, conn))
+                        Console.WriteLine("Enter the Receiver Account Number ");
+                        string accountNumber = Console.ReadLine();
+                        Console.WriteLine("Enter your Account Number");
+                        string number = Console.ReadLine();
+                        Console.WriteLine("Enter the Receiver Account Name");
+                        string name = Console.ReadLine().ToLower();
+                        if(number == accountNumber)
                         {
-                            cmd2.Parameters.AddWithValue("@number",number);
-                            using(SqlDataReader reader2 = cmd2.ExecuteReader())
+                            Console.WriteLine("Sender and Receiver Account Number cannot be same!");
+                        }
+                        using (SqlConnection conn = new SqlConnection(connectionString))
+                        {
+                            conn.Open();
+                            string query = "SELECT Balance FROM Accounts WHERE AccountNumber = @accountNumber AND Name = @name";
+                            using (SqlCommand cmd = new SqlCommand(query, conn))
                             {
-                                if (!reader2.HasRows)
+                                cmd.Parameters.AddWithValue("@accountNumber", accountNumber);
+                                cmd.Parameters.AddWithValue("@name", name);
+                                using (SqlDataReader reader = cmd.ExecuteReader())
                                 {
-                                    Console.WriteLine("Not found.");
-                                    return;
-                                }
-                                Console.WriteLine("\n--Deposit Money---");
-                                while (reader2.Read())
-                                {
-                                    if(Convert.ToDecimal(reader2["Balance"]) < amount)
+                                    if (!reader.HasRows)
                                     {
-                                        Console.WriteLine("You do not have sufficient balance");
+                                        Console.WriteLine("Not found.");
+                                        return;
                                     }
-                                    AmountValue = Convert.ToDecimal(reader2["Balance"]) - amount;
+                                    Console.WriteLine("\n--Deposit Money---");
+                                    while (reader.Read())
+                                    {
+                                        totalAmount = Convert.ToDecimal(reader["Balance"]);
+                                    }
                                 }
                             }
+                            string query2 = "SELECT Balance FROM Accounts WHERE AccountNumber = @number";
+                            using (SqlCommand cmd2 = new SqlCommand(query2, conn))
+                            {
+                                cmd2.Parameters.AddWithValue("@number", number);
+                                using (SqlDataReader reader2 = cmd2.ExecuteReader())
+                                {
+                                    if (!reader2.HasRows)
+                                    {
+                                        Console.WriteLine("Not found.");
+                                        return;
+                                    }
+                                   
+                                    while (reader2.Read())
+                                    {
+                                        if (Convert.ToDecimal(reader2["Balance"]) > amount)
+                                        {
+                                            Console.WriteLine("You do not have sufficient balance");
+                                            return;
+                                        }
+                                        totalAmount = totalAmount + amount;
+                                        AmountValue = Convert.ToDecimal(reader2["Balance"]) - amount;
+                                    }
+                                }
 
-                        }
-                        string query3 = "Update Accounts SET Balance = @AmountValue Where AccountNumber = @number";
-                        using (SqlCommand cmd1 = new SqlCommand(query3, conn))
-                        {
-                            cmd1.Parameters.AddWithValue("@AmountValue", AmountValue);
-                            cmd1.Parameters.AddWithValue("@number", number);
-                            int rowsAffected = cmd1.ExecuteNonQuery();
+                            }
+                            string query3 = @"Update Accounts SET Balance = @AmountValue Where AccountNumber = @number;
+                                             Update Accounts SET Balance = @totalAmount Where AccountNumber = @accountNumber;";
+                            using (SqlCommand cmd1 = new SqlCommand(query3, conn))
+                            {
+                                cmd1.Parameters.AddWithValue("@AmountValue", AmountValue);
+                                cmd1.Parameters.AddWithValue("@number", number);
+                                cmd1.Parameters.AddWithValue("@accountNumber",accountNumber);
+                                cmd1.Parameters.AddWithValue("@totalAmount",totalAmount);
+                                int rowsAffected = cmd1.ExecuteNonQuery();
+                                Console.WriteLine("Amount Deposit successfully");
+                            }
+
                             
-                        }
-                        string query1 = "Update Accounts SET Balance = @totalAmount Where AccountNumber = @accountNumber";
-                        using(SqlCommand cmd1 = new SqlCommand(query1,conn))
-                        {
-                            cmd1.Parameters.AddWithValue("@totalAmount",totalAmount);
-                            cmd1.Parameters.AddWithValue("@accountNumber", accountNumber);
-                            int rowsAffected = cmd1.ExecuteNonQuery();
-                            if (rowsAffected > 0)
-                            {
-                                Console.WriteLine("Amount sent successfully.");
-                            }
-                            else
-                            {
-                                Console.WriteLine("Account not found.");
-                            }
-                        }
 
-
+                        }
+                    }catch(Exception ex)
+                    {
+                        Console.WriteLine("Something unusual happened!");
                     }
                 }
             }
