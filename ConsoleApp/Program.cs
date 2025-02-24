@@ -10,6 +10,7 @@ using ConsoleApp.Feb12;
 using ConsoleApp.Feb19;
 using ConsoleApp.Feb2;
 using ConsoleApp.Feb20;
+using ConsoleApp.Feb23;
 using ConsoleApp.Feb3;
 using ConsoleApp.Feb6;
 using ConsoleApp.Feb7;
@@ -304,4 +305,7 @@ example.LINQEx();*/
 
 /*CRUDApplication.App();*/
 
-BankApp.App();
+/*BankApp.App();*/
+
+
+CRUDEntity.Execute();
