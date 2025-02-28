@@ -1,4 +1,5 @@
-﻿using EmergencyContactForm.Database;
+﻿using EmergencyContactForm;
+using EmergencyContactForm.Database;
 using EmergencyContactForm.Models;
 using System;
 using System.Collections.Generic;
@@ -45,12 +46,23 @@ namespace ContactUsForm
 
                 db.EmergencyContacts.Add(emergencyContact);
                 db.SaveChanges();
+
+                DisplayForm displayForm = new DisplayForm(
+              emergencyContact.FirstName,
+              emergencyContact.LastName,
+              emergencyContact.Email,
+              emergencyContact.PhoneNumber,
+              emergencyContact.Relationship,
+              emergencyContact.Address,
+              emergencyContact.SecondAddress,
+              emergencyContact.City,
+              emergencyContact.State,
+              emergencyContact.ZipCode
+          );
+                displayForm.Show();
             }
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
+   
     }
 }
