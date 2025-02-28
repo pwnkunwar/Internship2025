@@ -67,6 +67,7 @@
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(234, 32);
             textBox1.TabIndex = 0;
+            textBox1.TextChanged += textBox1_TextChanged;
             // 
             // label1
             // 
@@ -352,6 +353,7 @@
             button1.TabIndex = 29;
             button1.Text = "Submit";
             button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
             // 
             // Form1
             // 
