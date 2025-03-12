@@ -13,9 +13,17 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WinFromsApp", "WinFromsApp\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CalculatorApp", "CalculatorApp\CalculatorApp.csproj", "{E4540930-3A9B-41CC-80DC-B1AD891A2597}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactUsForm", "ContactUsForm\ContactUsForm.csproj", "{C8F2A8C0-1F22-4381-B27C-13591A252ECD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ContactUsForm", "ContactUsForm\ContactUsForm.csproj", "{C8F2A8C0-1F22-4381-B27C-13591A252ECD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmergencyContactForm", "EmergencyContactForm\EmergencyContactForm.csproj", "{83888CBA-293D-46C1-902C-F3261FF66F2E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmergencyContactForm", "EmergencyContactForm\EmergencyContactForm.csproj", "{83888CBA-293D-46C1-902C-F3261FF66F2E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RegisterForm", "RegisterForm\RegisterForm.csproj", "{80E4D7E0-9999-4F69-84E5-C3194A67C928}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LoginForm", "LoginForm\LoginForm.csproj", "{533ECA90-FFEC-4E21-8421-8060BE23E348}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ForgotPasswordForm", "ForgotPasswordForm\ForgotPasswordForm.csproj", "{8DEB91C3-5188-4B3E-867D-BA00F4334114}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductCRUD", "ProductCRUD\ProductCRUD.csproj", "{2E3F789B-B94A-4B53-B228-DE4F958169D4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +59,22 @@ Global
 		{83888CBA-293D-46C1-902C-F3261FF66F2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{83888CBA-293D-46C1-902C-F3261FF66F2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{83888CBA-293D-46C1-902C-F3261FF66F2E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{80E4D7E0-9999-4F69-84E5-C3194A67C928}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80E4D7E0-9999-4F69-84E5-C3194A67C928}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80E4D7E0-9999-4F69-84E5-C3194A67C928}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80E4D7E0-9999-4F69-84E5-C3194A67C928}.Release|Any CPU.Build.0 = Release|Any CPU
+		{533ECA90-FFEC-4E21-8421-8060BE23E348}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{533ECA90-FFEC-4E21-8421-8060BE23E348}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{533ECA90-FFEC-4E21-8421-8060BE23E348}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{533ECA90-FFEC-4E21-8421-8060BE23E348}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8DEB91C3-5188-4B3E-867D-BA00F4334114}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8DEB91C3-5188-4B3E-867D-BA00F4334114}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8DEB91C3-5188-4B3E-867D-BA00F4334114}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8DEB91C3-5188-4B3E-867D-BA00F4334114}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2E3F789B-B94A-4B53-B228-DE4F958169D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E3F789B-B94A-4B53-B228-DE4F958169D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2E3F789B-B94A-4B53-B228-DE4F958169D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2E3F789B-B94A-4B53-B228-DE4F958169D4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
