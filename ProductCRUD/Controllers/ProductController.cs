@@ -44,7 +44,7 @@ namespace ProductCRUD.Controllers
             return View(product);
         }
         [HttpPost]
-        public async Task<IActionResult> UpdateAsync(Product product)
+        public async Task<IActionResult> EditAsync(Product product)
         {
             if(ModelState.IsValid)
 			{
