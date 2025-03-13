@@ -68,7 +68,7 @@ namespace ProductCRUD.Controllers
         [HttpPost]
         public async Task<IActionResult> DeleteAsync(Product product)
         {
-            _db.Products.Remove(product);
+             _db.Products.Remove(product);
             await _db.SaveChangesAsync();
             return RedirectToAction("Index");
             
