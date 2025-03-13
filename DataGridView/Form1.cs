@@ -1,3 +1,6 @@
+using System.Data;
+using System.Data.SqlClient;
+
 namespace DataGridView
 {
 	public partial class Form1 : Form
@@ -9,7 +12,21 @@ namespace DataGridView
 
 		private void btnShowData_Click(object sender, EventArgs e)
 		{
-			String connectionString = 
+			String connectionString = "Data Source=DESKTOP-3SS2B66;Initial Catalog=DataGridView;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
+
+			SqlConnection connection = new SqlConnection(connectionString);
+			connection.Open();
+
+			String Query = "SELECT * FROM Names";
+			SqlCommand command = new SqlCommand(Query, connection);
+			var reader = command.ExecuteReader();	
+
+			DataTable dataTable = new DataTable();
+			dataTable.Load(reader);
+
+			dataGridView1.DataSource = dataTable;
+
+			connection.Close();
 		}
 	}
 }
