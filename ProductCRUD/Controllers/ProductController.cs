@@ -54,6 +54,17 @@ namespace ProductCRUD.Controllers
 			}
 			return View(product);
         }
+        [HttpGet]
+        public async Task<IActionResult> DeleteAsync(Guid productId)
+		{
+			var findProduct = await _db.Products.FindAsync(productId);
+			if(findProduct == null)
+			{
+				return NotFound();
+			}
+			Product product = await _db.Products.FirstOrDefaultAsync(p=>p.ProductId == productId);
+			return View(product);
+		}
 
     }
 }
