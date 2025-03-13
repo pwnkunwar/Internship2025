@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using ProductCRUD.Database;
 using ProductCRUD.Models;
 
@@ -29,6 +30,17 @@ namespace ProductCRUD.Controllers
                 await _db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
+            return View(product);
+        }
+        [HttpGet]
+        public async Task<IActionResult> EditAsync(Guid productId)
+        {
+            var findProduct = await _db.Products.FindAsync(productId);
+            if(findProduct == null)
+            {
+                return NotFound();
+            }
+            Product product = await _db.Products.FirstOrDefaultAsync(p=>p.ProductId == productId);
             return View(product);
         }
     }
