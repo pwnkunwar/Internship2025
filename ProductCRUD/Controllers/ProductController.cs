@@ -43,5 +43,17 @@ namespace ProductCRUD.Controllers
             Product product = await _db.Products.FirstOrDefaultAsync(p=>p.ProductId == productId);
             return View(product);
         }
+        [HttpPost]
+        public async Task<IActionResult> UpdateAsync(Product product)
+        {
+            if(ModelState.IsValid)
+			{
+				_db.Products.Update(product);
+				await _db.SaveChangesAsync();
+				return RedirectToAction("Index");
+			}
+			return View(product);
+        }
+
     }
 }
