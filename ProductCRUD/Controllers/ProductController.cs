@@ -14,8 +14,9 @@ namespace ProductCRUD.Controllers
         }
         public IActionResult Index()
         {
-            List<Product> products = _db.Products.ToList();
+            List<Product> products = _db.Products.ToList(); 
             return View(products);
+
         }
         public IActionResult Create()
         {
@@ -28,6 +29,8 @@ namespace ProductCRUD.Controllers
             {
                 await _db.Products.AddAsync(product);
                 await _db.SaveChangesAsync();
+                TempData["Message"] = "Product Created Successfully!";
+                TempData["MessageType"] = "success";
                 return RedirectToAction("Index");
             }
             return View(product);
@@ -50,7 +53,9 @@ namespace ProductCRUD.Controllers
 			{
 				_db.Products.Update(product);
 				await _db.SaveChangesAsync();
-				return RedirectToAction("Index");
+                TempData["Message"] = "Product Edited Successfully!";
+                TempData["MessageType"] = "success";
+                return RedirectToAction("Index");
 			}
 			return View(product);
         }
@@ -70,6 +75,8 @@ namespace ProductCRUD.Controllers
         {
              _db.Products.Remove(product);
             await _db.SaveChangesAsync();
+            TempData["Message"] = "Product Deleted Successfully!";
+            TempData["MessageType"] = "error";
             return RedirectToAction("Index");
             
         }
