@@ -190,10 +190,10 @@ namespace DataDashboardApp.Models
         }
 
         // Public methods 
-        public void LoadData(DateTime startDate, DateTime endDate)
+        public bool LoadData(DateTime startDate, DateTime endDate)
         {
             endDate = new DateTime(endDate.Year, endDate.Month, endDate.Day,
-                endDate.Hour, endDate.Minute, 59); 
+                endDate.Hour, endDate.Minute, 59);
             if (startDate != this.startDate || endDate != endDate)
             {
                 this.startDate = startDate;
@@ -203,7 +203,14 @@ namespace DataDashboardApp.Models
                 GetNumberItems();
                 GetProductAnalysis();
                 GetOrderAnalysis();
+                return true;
             }
+            else
+            {
+                Console.WriteLine("Date not refreshed, same query: {0} - {1}", startDate.ToString(), endDate.ToString());
+                return false;
+            }
+        }
 
     }
 }
