@@ -174,6 +174,17 @@ namespace DataDashboardApp.Models
                             new KeyValuePair<string, int>(reader[0].ToString(), (int)reader[1]));
                     }
                     reader.Close();
+
+                    //Get UnderStock
+                    command.CommandText = @"select ProductName, Stock 
+                                           from Product
+                                            where Stock <= 6 and IsDiscontinued = 0";
+                    while(reader.Read())
+                    {
+                        UnderStockList.Add(
+                            new KeyValuePair<string, int>(reader[0].ToString(), (int)reader[1]));
+                    }
+                    reader.Close();
                 }
             }
         }
