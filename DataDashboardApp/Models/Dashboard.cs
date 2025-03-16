@@ -1,4 +1,5 @@
 ﻿using DataDashboardApp.Db;
+using Microsoft.Data.SqlClient;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,5 +33,38 @@ namespace DataDashboardApp.Models
         {
             
         }
+
+        //Private methods
+        private void GetNumberItems()
+        {
+            using(var connection = GetConnection())
+            {
+                connection.Open();
+                using(var command = new SqlCommand())
+                {
+                    command.Connection = connection;
+                    // Get Total Number of Customers
+                    command.CommandText = "SELECT COUNT(id) FROM Customer";
+                    NumCustomers = (int)command.ExecuteScalar();
+
+                    // Get Total Number of Suppliers
+                    command.CommandText = "SELECT COUNT(id) FROM Supplier";
+                    NumSuppliers = (int)command.ExecuteScalar();
+
+                    // Get Total Number of Products
+                    command.CommandText = "SELECT COUNT(id) FROM Product";
+                    NumProducts = (int)command.ExecuteScalar();
+
+
+                    // Get Total Number of Orders
+                    command.CommandText = @"SELECT COUNT(id) FROM [Order]" +
+                                       " WHERE order_date BETWEEN @startDate AND @endDate";
+                    command.Parameters.AddWithValue("@startDate", System.Data.SqlDbType.DateTime).Value = startDate;
+                    command.Parameters.AddWithValue("@endDate", System.Data.SqlDbType.DateTime).Value = endDate;
+                    NumOrders = (int)command.ExecuteScalar();
+                }
+            }
+        }
+
     }
 }
