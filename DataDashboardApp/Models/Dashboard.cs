@@ -189,5 +189,21 @@ namespace DataDashboardApp.Models
             }
         }
 
+        // Public methods 
+        public void LoadData(DateTime startDate, DateTime endDate)
+        {
+            endDate = new DateTime(endDate.Year, endDate.Month, endDate.Day,
+                endDate.Hour, endDate.Minute, 59); 
+            if (startDate != this.startDate || endDate != endDate)
+            {
+                this.startDate = startDate;
+                this.endDate = endDate;
+                this.numberDays = (endDate - startDate).Days;
+
+                GetNumberItems();
+                GetProductAnalysis();
+                GetOrderAnalysis();
+            }
+
     }
 }
