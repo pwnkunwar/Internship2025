@@ -67,7 +67,7 @@ namespace DataDashboardApp.Models
             }
         }
 
-        private void GetOrderAnalisys()
+        private void GetOrderAnalysis()
         {
             GrossRevenueList = new List<RevenueByDate>();
             TotalProfit = 0;
@@ -144,6 +144,36 @@ namespace DataDashboardApp.Models
                                                 TotalAmount = order.Sum(amount => amount.Value)
                                             }).ToList();
                     }
+                }
+            }
+        }
+        private void GetProductAnalysis()
+        {
+            TopProductsList = new List<KeyValuePair<string, int>>();
+            UnderStockList = new List<KeyValuePair<string, int>>();
+            using(var connection = GetConnection())
+            {
+                connection.Open();
+                using(var command = new SqlCommand())
+                {
+                    SqlDataReader reader;
+                    command.Connection = connection;
+                    command.CommandText = @"select top 5 P.ProductName, sum(OrderItem.Quantity) as Q
+                                          from OrderItem
+                                          inner join Product P on P.Id = OrderItem.ProductId
+                                          inner [Order} O on O.Id = OrderItem.OrderId 
+                                           where OrdreDate between @fromDate and @endDate
+                                           group by P.ProductName
+                                            order by Q desc";
+                    command.Parameters.Add("@fromDate", System.Data.SqlDbType.DateTime).Value = startDate;
+                    command.Parameters.Add("@toDate", System.Data.SqlDbType.DateTime).Value = endDate;
+                    reader = command.ExecuteReader();
+                    while(reader.Read())
+                    {
+                        TopProductsList.Add(
+                            new KeyValuePair<string, int>(reader[0].ToString(), (int)reader[1]));
+                    }
+                    reader.Close();
                 }
             }
         }
