@@ -12,7 +12,7 @@ namespace DataDashboardApp.Db;
 
     public DbConnection()
     {
-        _connectionString = "Server=myServerAddress;Database=myDataBase;Uid=myUsername;Pwd=myPassword;";
+        _connectionString = "Data Source=DESKTOP-3SS2B66;Initial Catalog=DataDashboardApp;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
     }
     protected SqlConnection GetConnection()
     {

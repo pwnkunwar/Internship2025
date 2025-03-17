@@ -59,7 +59,7 @@ namespace DataDashboardApp.Models
 
                     // Get Total Number of Orders
                     command.CommandText = @"SELECT COUNT(id) FROM [Order]" +
-                                       " WHERE order_date BETWEEN @startDate AND @endDate";
+                                       " WHERE OrderDate BETWEEN @startDate AND @endDate";
                     command.Parameters.AddWithValue("@startDate", System.Data.SqlDbType.DateTime).Value = startDate;
                     command.Parameters.AddWithValue("@endDate", System.Data.SqlDbType.DateTime).Value = endDate;
                     NumOrders = (int)command.ExecuteScalar();

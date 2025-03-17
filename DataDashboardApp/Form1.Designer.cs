@@ -33,7 +33,7 @@
             btnEndDate = new DateTimePicker();
             btnThisMonth = new Button();
             btnToday = new Button();
-            last7Days = new Button();
+            btnlast7Days = new Button();
             this30Days = new Button();
             btnCustom = new Button();
             btnOK = new Button();
@@ -52,16 +52,16 @@
             sqlCommand2 = new Microsoft.Data.SqlClient.SqlCommand();
             sqlCommand3 = new Microsoft.Data.SqlClient.SqlCommand();
             panel4 = new Panel();
+            lblNumSuppliers = new Label();
+            lblNumProducts = new Label();
+            lblNumCustomers = new Label();
+            label10 = new Label();
+            label9 = new Label();
+            label2 = new Label();
             label6 = new Label();
             panel5 = new Panel();
-            label8 = new Label();
-            label2 = new Label();
-            label9 = new Label();
-            label10 = new Label();
-            label11 = new Label();
-            label12 = new Label();
-            label13 = new Label();
             productUnderStock = new DataGridView();
+            label8 = new Label();
             label7 = new Label();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
@@ -107,14 +107,14 @@
             btnToday.Text = "Today";
             btnToday.UseVisualStyleBackColor = true;
             // 
-            // last7Days
+            // btnlast7Days
             // 
-            last7Days.Location = new Point(1017, 10);
-            last7Days.Name = "last7Days";
-            last7Days.Size = new Size(120, 30);
-            last7Days.TabIndex = 4;
-            last7Days.Text = "Last 7 Days";
-            last7Days.UseVisualStyleBackColor = true;
+            btnlast7Days.Location = new Point(1017, 10);
+            btnlast7Days.Name = "btnlast7Days";
+            btnlast7Days.Size = new Size(120, 30);
+            btnlast7Days.TabIndex = 4;
+            btnlast7Days.Text = "Last 7 Days";
+            btnlast7Days.UseVisualStyleBackColor = true;
             // 
             // this30Days
             // 
@@ -264,9 +264,9 @@
             // panel4
             // 
             panel4.BackColor = Color.White;
-            panel4.Controls.Add(label13);
-            panel4.Controls.Add(label12);
-            panel4.Controls.Add(label11);
+            panel4.Controls.Add(lblNumSuppliers);
+            panel4.Controls.Add(lblNumProducts);
+            panel4.Controls.Add(lblNumCustomers);
             panel4.Controls.Add(label10);
             panel4.Controls.Add(label9);
             panel4.Controls.Add(label2);
@@ -275,6 +275,63 @@
             panel4.Name = "panel4";
             panel4.Size = new Size(200, 180);
             panel4.TabIndex = 12;
+            // 
+            // lblNumSuppliers
+            // 
+            lblNumSuppliers.AutoSize = true;
+            lblNumSuppliers.Font = new Font("Segoe UI", 15F);
+            lblNumSuppliers.Location = new Point(60, 98);
+            lblNumSuppliers.Name = "lblNumSuppliers";
+            lblNumSuppliers.Size = new Size(67, 28);
+            lblNumSuppliers.TabIndex = 6;
+            lblNumSuppliers.Text = "10000";
+            // 
+            // lblNumProducts
+            // 
+            lblNumProducts.AutoSize = true;
+            lblNumProducts.Font = new Font("Segoe UI", 15F);
+            lblNumProducts.Location = new Point(60, 145);
+            lblNumProducts.Name = "lblNumProducts";
+            lblNumProducts.Size = new Size(67, 28);
+            lblNumProducts.TabIndex = 5;
+            lblNumProducts.Text = "10000";
+            // 
+            // lblNumCustomers
+            // 
+            lblNumCustomers.AutoSize = true;
+            lblNumCustomers.Font = new Font("Segoe UI", 15F);
+            lblNumCustomers.Location = new Point(60, 52);
+            lblNumCustomers.Name = "lblNumCustomers";
+            lblNumCustomers.Size = new Size(67, 28);
+            lblNumCustomers.TabIndex = 4;
+            lblNumCustomers.Text = "10000";
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Location = new Point(44, 37);
+            label10.Name = "label10";
+            label10.Size = new Size(127, 15);
+            label10.TabIndex = 3;
+            label10.Text = "Number Of Customers";
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Location = new Point(44, 130);
+            label9.Name = "label9";
+            label9.Size = new Size(117, 15);
+            label9.TabIndex = 2;
+            label9.Text = "Number Of Products";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(48, 83);
+            label2.Name = "label2";
+            label2.Size = new Size(118, 15);
+            label2.TabIndex = 1;
+            label2.Text = "Number Of Suppliers";
             // 
             // label6
             // 
@@ -296,6 +353,14 @@
             panel5.Size = new Size(624, 180);
             panel5.TabIndex = 13;
             // 
+            // productUnderStock
+            // 
+            productUnderStock.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            productUnderStock.Location = new Point(6, 31);
+            productUnderStock.Name = "productUnderStock";
+            productUnderStock.Size = new Size(605, 142);
+            productUnderStock.TabIndex = 1;
+            // 
             // label8
             // 
             label8.AutoSize = true;
@@ -305,71 +370,6 @@
             label8.Size = new Size(194, 28);
             label8.TabIndex = 0;
             label8.Text = "Products Understock";
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Location = new Point(48, 83);
-            label2.Name = "label2";
-            label2.Size = new Size(118, 15);
-            label2.TabIndex = 1;
-            label2.Text = "Number Of Suppliers";
-            // 
-            // label9
-            // 
-            label9.AutoSize = true;
-            label9.Location = new Point(44, 130);
-            label9.Name = "label9";
-            label9.Size = new Size(127, 15);
-            label9.TabIndex = 2;
-            label9.Text = "Number Of Customers";
-            // 
-            // label10
-            // 
-            label10.AutoSize = true;
-            label10.Location = new Point(44, 37);
-            label10.Name = "label10";
-            label10.Size = new Size(127, 15);
-            label10.TabIndex = 3;
-            label10.Text = "Number Of Customers";
-            // 
-            // label11
-            // 
-            label11.AutoSize = true;
-            label11.Font = new Font("Segoe UI", 15F);
-            label11.Location = new Point(60, 52);
-            label11.Name = "label11";
-            label11.Size = new Size(67, 28);
-            label11.TabIndex = 4;
-            label11.Text = "10000";
-            // 
-            // label12
-            // 
-            label12.AutoSize = true;
-            label12.Font = new Font("Segoe UI", 15F);
-            label12.Location = new Point(60, 145);
-            label12.Name = "label12";
-            label12.Size = new Size(67, 28);
-            label12.TabIndex = 5;
-            label12.Text = "10000";
-            // 
-            // label13
-            // 
-            label13.AutoSize = true;
-            label13.Font = new Font("Segoe UI", 15F);
-            label13.Location = new Point(60, 98);
-            label13.Name = "label13";
-            label13.Size = new Size(67, 28);
-            label13.TabIndex = 6;
-            label13.Text = "10000";
-            // 
-            // productUnderStock
-            // 
-            productUnderStock.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            productUnderStock.Location = new Point(6, 31);
-            productUnderStock.Name = "productUnderStock";
-            productUnderStock.Size = new Size(605, 142);
-            productUnderStock.TabIndex = 1;
             // 
             // label7
             // 
@@ -395,7 +395,7 @@
             Controls.Add(btnOK);
             Controls.Add(btnCustom);
             Controls.Add(this30Days);
-            Controls.Add(last7Days);
+            Controls.Add(btnlast7Days);
             Controls.Add(btnToday);
             Controls.Add(btnThisMonth);
             Controls.Add(btnEndDate);
@@ -424,7 +424,7 @@
         private DateTimePicker btnEndDate;
         private Button btnThisMonth;
         private Button btnToday;
-        private Button last7Days;
+        private Button btnlast7Days;
         private Button this30Days;
         private Button btnCustom;
         private Button btnOK;
@@ -443,15 +443,15 @@
         private Microsoft.Data.SqlClient.SqlCommand sqlCommand2;
         private Microsoft.Data.SqlClient.SqlCommand sqlCommand3;
         private Panel panel4;
-        private Label label12;
-        private Label label11;
+        private Label lblNumProducts;
+        private Label lblNumCustomers;
         private Label label10;
         private Label label9;
         private Label label2;
         private Label label6;
         private Panel panel5;
         private Label label8;
-        private Label label13;
+        private Label lblNumSuppliers;
         private DataGridView productUnderStock;
         private Label label7;
     }
