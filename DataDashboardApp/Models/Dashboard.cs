@@ -158,22 +158,24 @@ namespace DataDashboardApp.Models
                 {
                     SqlDataReader reader;
                     command.Connection = connection;
-                    command.CommandText = @"select top 5 P.ProductName, sum(OrderItem.Quantity) as Q
-                                          from OrderItem
-                                          inner join Product P on P.Id = OrderItem.ProductId
-                                          inner [Order} O on O.Id = OrderItem.OrderId 
-                                           where OrdreDate between @fromDate and @endDate
-                                           group by P.ProductName
-                                            order by Q desc";
+                    command.CommandText = @"SELECT TOP 5 
+    P.ProductName, 
+    SUM(OI.Quantity) AS Q
+FROM OrderItem OI
+INNER JOIN Product P ON P.Id = OI.ProductId
+INNER JOIN [Order] O ON O.Id = OI.OrderId 
+WHERE O.OrderDate BETWEEN @fromDate AND @endDate
+GROUP BY P.ProductName
+ORDER BY Q DESC";
                     command.Parameters.Add("@fromDate", System.Data.SqlDbType.DateTime).Value = startDate;
-                    command.Parameters.Add("@toDate", System.Data.SqlDbType.DateTime).Value = endDate;
+                    command.Parameters.Add("@endDate", System.Data.SqlDbType.DateTime).Value = endDate;
                     reader = command.ExecuteReader();
                     while(reader.Read())
                     {
                         TopProductsList.Add(
                             new KeyValuePair<string, int>(reader[0].ToString(), (int)reader[1]));
                     }
-                    reader.Close();
+                   // reader.Close();
 
                     //Get UnderStock
                     command.CommandText = @"select ProductName, Stock 
