@@ -97,6 +97,7 @@
             btnThisMonth.TabIndex = 2;
             btnThisMonth.Text = "This Month";
             btnThisMonth.UseVisualStyleBackColor = true;
+            btnThisMonth.Click += btnThisMonth_Click;
             // 
             // btnToday
             // 
@@ -106,6 +107,7 @@
             btnToday.TabIndex = 3;
             btnToday.Text = "Today";
             btnToday.UseVisualStyleBackColor = true;
+            btnToday.Click += btnToday_Click;
             // 
             // btnlast7Days
             // 
@@ -115,6 +117,7 @@
             btnlast7Days.TabIndex = 4;
             btnlast7Days.Text = "Last 7 Days";
             btnlast7Days.UseVisualStyleBackColor = true;
+            btnlast7Days.Click += btnlast7Days_Click;
             // 
             // this30Days
             // 
@@ -124,6 +127,7 @@
             this30Days.TabIndex = 5;
             this30Days.Text = "This 30 Days";
             this30Days.UseVisualStyleBackColor = true;
+            this30Days.Click += this30Days_Click;
             // 
             // btnCustom
             // 
@@ -143,6 +147,7 @@
             btnOK.TabIndex = 7;
             btnOK.Text = "Ok";
             btnOK.UseVisualStyleBackColor = true;
+            btnOK.Click += btnOK_Click;
             // 
             // contextMenuStrip1
             // 

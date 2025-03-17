@@ -53,7 +53,51 @@ namespace DataDashboardApp
 
         private void btnCustom_Click(object sender, EventArgs e)
         {
+            dtpStartDate.Enabled = true;
+            btnEndDate.Enabled = true;
+            btnOK.Visible = true;
+        }
+        private void DisableCustomeDates()
+        {
+            dtpStartDate.Enabled = false;
+            btnEndDate.Enabled = false;
+            btnOK.Visible = false;
+        }
 
+        private void btnToday_Click(object sender, EventArgs e)
+        {
+            dtpStartDate.Value = DateTime.Today;
+            btnEndDate.Value = DateTime.Now;
+            LoadData();
+            DisableCustomeDates();
+        }
+
+        private void btnlast7Days_Click(object sender, EventArgs e)
+        {
+            dtpStartDate.Value = DateTime.Now.AddDays(-7);
+            btnEndDate.Value = DateTime.Now;
+            LoadData();
+            DisableCustomeDates();
+        }
+
+        private void this30Days_Click(object sender, EventArgs e)
+        {
+            dtpStartDate.Value = DateTime.Today.AddDays(-30);
+            btnEndDate.Value = DateTime.Now;
+            LoadData();
+            DisableCustomeDates();
+        }
+
+        private void btnThisMonth_Click(object sender, EventArgs e)
+        {
+            dtpStartDate.Enabled = true;
+            btnEndDate.Enabled = true;
+            btnOK.Visible = true;
+        }
+
+        private void btnOK_Click(object sender, EventArgs e)
+        {
+            LoadData();
         }
     }
 }
