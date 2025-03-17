@@ -9,7 +9,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="LiveCharts.WinForms" Version="0.9.7.1" />
     <PackageReference Include="Microsoft.Data.SqlClient" Version="6.0.1" />
+	  <PackageReference Include="System.Windows.Forms.DataVisualization" Version="1.0.0-prerelease.20110.1" />
   </ItemGroup>
 
 </Project>

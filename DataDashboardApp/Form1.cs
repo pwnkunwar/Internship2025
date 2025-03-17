@@ -16,5 +16,10 @@ namespace DataDashboardApp
         {
 
         }
+
+        private void btnCustom_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
