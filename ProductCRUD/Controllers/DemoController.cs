@@ -14,5 +14,15 @@ namespace ProductCRUD.Controllers
             return View();
         }
 
+        public IActionResult TempDataDemo()
+        {
+            return View();
+        }
+        public IActionResult RedirectToTempData()
+        {
+            TempData["Notice"] = "This is TempData Data (Survives Redirect)";
+            return RedirectToAction("TempDataDemo");
+        }
+
     }
 }

@@ -1,0 +1,9 @@
+﻿@{
+    ViewData["Title"] = "TempData Demo";
+}
+<h2>@ViewData["Title"]</h2>
+
+<p><strong>TempData:</strong> @TempData["Notice"]</p>
+
+
+<a href="@Url.Action("TempDataDemo", "Demo")">Refresh Page</a>
