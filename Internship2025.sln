@@ -41,6 +41,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchoolProject.ViewModels", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchoolProject.Utilities", "SchoolProject.Utilities\SchoolProject.Utilities.csproj", "{A221FDE1-A788-41ED-A8BA-F16A897683DD}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SchoolProject", "SchoolProject", "{F97B443B-481D-42E8-A2C6-884186E0B45A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -126,6 +128,14 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F788F236-95F6-4984-B15F-991DDA476077} = {F97B443B-481D-42E8-A2C6-884186E0B45A}
+		{85CB7FF2-3E08-47FE-B080-B1546F0C5E4E} = {F97B443B-481D-42E8-A2C6-884186E0B45A}
+		{0A3C56DF-3126-4780-A02F-2976A62235F8} = {F97B443B-481D-42E8-A2C6-884186E0B45A}
+		{7B0B68F9-018C-4F40-B6A3-71BFDB04DA27} = {F97B443B-481D-42E8-A2C6-884186E0B45A}
+		{076DFE94-9074-437F-977B-9F07D0BA8A48} = {F97B443B-481D-42E8-A2C6-884186E0B45A}
+		{A221FDE1-A788-41ED-A8BA-F16A897683DD} = {F97B443B-481D-42E8-A2C6-884186E0B45A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4E50BA7A-F6B4-4AD7-87B9-C2DFE15D8219}
