@@ -6,16 +6,19 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace SchoolProject.Models
-{ 
-    public class Student
+{
+    public class Teacher
     {
-        public int Id { get; set; }
+        public int Id { get; set; } 
         public string FirstName { get; set; }
-        public string LastName { get; set; }    
+        public string LastName { get; set; }
         public DateTime DOB { get; set; }
         public DateTime DateOfJoin { get; set; }
         public bool Selected { get; set; }
         [Unique]
         public string KeyId { get; set; }
+        public string Qualification { get; set; }
+        public int YwaeOfEx { get; set; }
+
     }
 }
