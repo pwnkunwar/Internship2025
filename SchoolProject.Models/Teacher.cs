@@ -18,7 +18,10 @@ namespace SchoolProject.Models
         [Unique]
         public string KeyId { get; set; }
         public string Qualification { get; set; }
-        public int YwaeOfEx { get; set; }
+        public int YearOfEx { get; set; }
+        public ICollection<AssignGrade>? AssignGrades { get; set; }
+        public ICollection<Session>? Sessions { get; set; }
+        public ICollection<TeacherSession> TeacherSessions { get; set; }
 
     }
 }

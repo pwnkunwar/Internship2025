@@ -17,5 +17,6 @@ namespace SchoolProject.Models
         public bool Selected { get; set; }
         [Unique]
         public string KeyId { get; set; }
+        public ICollection<Enroll>? YearlySession { get; set; }
     }
 }
