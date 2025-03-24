@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace SchoolProject.Repositories
 {
-    public class GenericRepository<T>: IDisposable, IGenericRepository<T> where T : class
+    public class GenericRepository<T> : IDisposable, IGenericRepository<T> where T : class
     {
         private readonly ApplicationDBContext _db;
         internal DbSet<T> dbSet;
