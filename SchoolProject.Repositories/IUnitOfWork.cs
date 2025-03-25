@@ -8,6 +8,7 @@ namespace SchoolProject.Repositories
 {
     public interface IUnitOfWork
     {
-
+        IGenericRepository<T> Repository<T>() where T : class;
+        void Save();
     }
 }
