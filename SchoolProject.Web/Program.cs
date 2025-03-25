@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using SchoolProject.Models;
 using SchoolProject.Repositories;
+using SchoolProject.Utilities;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -30,3 +31,11 @@ app.MapControllerRoute(
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.Run();
+
+void DataSeeding()
+{
+    using (var scope = app.Services.CreateScope())
+    {
+        var DbInitializer = scope.ServiceProvider.GetRequiredService<IDbInitializer>();
+    }
+}
