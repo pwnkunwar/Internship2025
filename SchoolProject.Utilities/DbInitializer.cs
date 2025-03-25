@@ -35,6 +35,25 @@ namespace SchoolProject.Utilities
             {
                 throw;
             }
+            if(!_roleManager.RoleExistsAsync(WebsiteRole.Website_Admin).GetAwaiter().GetResult())
+            {
+                _roleManager.CreateAsync(new IdentityRole(WebsiteRole.Website_Admin)).GetAwaiter().GetResult();
+                _roleManager.CreateAsync(new IdentityRole(WebsiteRole.Website_Employee)).GetAwaiter().GetResult();
+                _roleManager.CreateAsync(new IdentityRole(WebsiteRole.Website_Teacher)).GetAwaiter().GetResult();
+                _roleManager.CreateAsync(new IdentityRole(WebsiteRole.Website_Student)).GetAwaiter().GetResult();
+            }
+            _userManager.CreateAsync(new ApplicationUser
+            {
+                UserName = "pwnkunwar@gmail.com",
+                Email = "pwnkunwar@gmail.com"
+            }, "pwnkunwar").GetAwaiter().GetResult();
+            var appuser = _userManager.Users.Where(x=>x.Email == "pwnkuwnar@gmail.com").FirstOrDefault();
+
+            if(appuser != null)
+            {
+                _userManager.AddToRoleAsync(appuser, WebsiteRole.Website_Admin).GetAwaiter().GetResult();
+            }
+
         }
     }
 }
