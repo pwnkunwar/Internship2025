@@ -41,5 +41,10 @@ namespace SchoolProject.Repositories
         {
             _db.SaveChanges();
         }
+
+        public IGenericRepository<T> Repository<T>() where T : class
+        {
+            throw new NotImplementedException();
+        }
     }
 }

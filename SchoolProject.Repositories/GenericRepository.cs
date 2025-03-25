@@ -133,5 +133,10 @@ namespace SchoolProject.Repositories
         {
             dbSet.AddRange(entity);
         }
+
+        public Task<T> DeleteAsync(List<T> entityList)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
