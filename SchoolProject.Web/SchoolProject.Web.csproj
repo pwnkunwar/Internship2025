@@ -24,4 +24,8 @@
     <ProjectReference Include="..\SchoolProject.Utilities\SchoolProject.Utilities.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Areas\Admin\" />
+  </ItemGroup>
+
 </Project>
